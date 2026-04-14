@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+build/
+npm-debug.log*
+yarn-error.log*
+
+# Ignore environment files
+.env
+*.env*

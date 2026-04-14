@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced Quill Editor Styles */
+.prose-editor .ql-container {
+  min-height: 400px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.prose-editor .ql-editor {
+  min-height: 400px;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.prose-editor .ql-editor.ql-blank::before {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.prose-editor .ql-toolbar {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.prose-editor .ql-container {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-top: none;
+  background: white;
+}
+
+.prose-editor .ql-toolbar button:hover,
+.prose-editor .ql-toolbar button:focus,
+.prose-editor .ql-toolbar button.ql-active {
+  color: #2563eb;
+}
+
+.prose-editor .ql-toolbar .ql-stroke {
+  stroke: #4b5563;
+}
+
+.prose-editor .ql-toolbar button:hover .ql-stroke,
+.prose-editor .ql-toolbar button:focus .ql-stroke,
+.prose-editor .ql-toolbar button.ql-active .ql-stroke {
+  stroke: #2563eb;
+}
+
+.prose-editor .ql-toolbar .ql-fill {
+  fill: #4b5563;
+}
+
+.prose-editor .ql-toolbar button:hover .ql-fill,
+.prose-editor .ql-toolbar button:focus .ql-fill,
+.prose-editor .ql-toolbar button.ql-active .ql-fill {
+  fill: #2563eb;
+}
+
+/* Preview Mode Prose Styling */
+.prose {
+  max-width: 65ch;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+}
+
+.prose h1 {
+  font-size: 2.25em;
+}
+
+.prose h2 {
+  font-size: 1.875em;
+}
+
+.prose h3 {
+  font-size: 1.5em;
+}
+
+.prose img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0.5rem;
+}
+
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: #1d4ed8;
+}
+
+.prose blockquote {
+  border-left: 4px solid #2563eb;
+  padding-left: 1em;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.prose code {
+  background: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+body { @apply bg-gray-50 text-gray-900; }
+
+
