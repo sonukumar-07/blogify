@@ -13,9 +13,14 @@ export default function Dashboard() {
   const { showConfirm } = useConfirm()
 
   const [posts, setPosts] = useState([])
-  const [stats, setStats] = useState({ totalViews: 0, totalLikes: 0, totalComments: 0 })
+  const [stats, setStats] = useState({
+    totalViews: 0,
+    totalLikes: 0,
+    totalComments: 0
+  })
   const [deletingPostId, setDeletingPostId] = useState(null)
 
+  // Load Data
   const loadDashboardData = async () => {
     try {
       const postsRes = await api.get('/users/me/posts')
@@ -38,6 +43,7 @@ export default function Dashboard() {
     loadDashboardData()
   }, [])
 
+  // Status Color
   const getStatusColor = (status) => {
     switch (status) {
       case 'published': return 'bg-green-100 text-green-800'
@@ -48,10 +54,12 @@ export default function Dashboard() {
     }
   }
 
+  // Edit
   const handleEdit = (post) => {
     navigate('/editor', { state: { post } })
   }
 
+  // Delete
   const handleDelete = async (post) => {
     const confirmed = await showConfirm({
       title: 'Delete Post?',
@@ -63,6 +71,7 @@ export default function Dashboard() {
     if (!confirmed) return
 
     setDeletingPostId(post._id)
+
     try {
       await api.delete(`/posts/${post.slug}`)
       toast.showSuccess('Post deleted successfully!')
@@ -82,28 +91,40 @@ export default function Dashboard() {
         <h1 className="text-2xl font-bold">
           Welcome, {user?.name || 'User'} 👋
         </h1>
-        <button onClick={logout} className="text-red-600">Logout</button>
+        <button onClick={logout} className="text-red-600 font-medium">
+          Logout
+        </button>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white p-4 rounded shadow">
-          👁️ Views: {stats.totalViews}
+        <div className="bg-white p-4 rounded shadow text-center">
+          👁️ <p className="font-semibold">Views</p>
+          <p>{stats.totalViews}</p>
         </div>
-        <div className="bg-white p-4 rounded shadow">
-          👍 Likes: {stats.totalLikes}
+        <div className="bg-white p-4 rounded shadow text-center">
+          👍 <p className="font-semibold">Likes</p>
+          <p>{stats.totalLikes}</p>
         </div>
-        <div className="bg-white p-4 rounded shadow">
-          💬 Comments: {stats.totalComments}
+        <div className="bg-white p-4 rounded shadow text-center">
+          💬 <p className="font-semibold">Comments</p>
+          <p>{stats.totalComments}</p>
         </div>
       </div>
 
       {/* Actions */}
       <div className="flex gap-4">
-        <Link to="/editor" className="bg-blue-600 text-white px-4 py-2 rounded">
+        <Link
+          to="/editor"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
           ✍️ New Post
         </Link>
-        <Link to="/" className="bg-gray-200 px-4 py-2 rounded">
+
+        <Link
+          to="/"
+          className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+        >
           Browse
         </Link>
       </div>
@@ -120,7 +141,7 @@ export default function Dashboard() {
 
               <div className="flex gap-4">
 
-                {/* ✅ IMAGE FIX */}
+                {/* Cover Image */}
                 {post.coverImageUrl && (
                   <img
                     src={post.coverImageUrl}
@@ -129,8 +150,12 @@ export default function Dashboard() {
                   />
                 )}
 
+                {/* Content */}
                 <div className="flex-1">
-                  <Link to={`/post/${post.slug}`} className="font-bold text-lg">
+                  <Link
+                    to={`/post/${post.slug}`}
+                    className="font-bold text-lg hover:underline"
+                  >
                     {post.title}
                   </Link>
 
@@ -144,23 +169,23 @@ export default function Dashboard() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 items-end">
                   <span className={`px-2 py-1 text-xs rounded ${getStatusColor(post.status)}`}>
                     {post.status}
                   </span>
 
                   <button
                     onClick={() => handleEdit(post)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600"
                   >
                     Edit
                   </button>
 
                   <button
                     onClick={() => handleDelete(post)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600"
                   >
-                    {deletingPostId === post._id ? '...' : 'Delete'}
+                    {deletingPostId === post._id ? 'Deleting...' : 'Delete'}
                   </button>
                 </div>
 

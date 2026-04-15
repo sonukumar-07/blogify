@@ -59,8 +59,8 @@ export default function Home() {
     <div className="space-y-3 md:space-y-4">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 md:p-8 text-center">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">AI-Powered Blog Platform</h1>
-        <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-6">Create, share, and discover amazing content with AI assistance</p>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Blogify – The Future of Blogging Platform</h1>
+        <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-6">Create, share, and discover amazing stories</p>
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-md mx-auto sm:max-w-none">
           {user ? (
             <Link 
